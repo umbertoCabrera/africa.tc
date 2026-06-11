@@ -1,0 +1,1384 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Africa Training Club — Más que un Gimnasio, Somos una Tribu</title>
+  <link rel="icon" type="image/png" href="Creativos\siglas-hexa-removebg-preview.webp" />
+  <link rel="apple-touch-icon" href="Creativos\siglas-hexa-removebg-preview.webp" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Raleway:wght@400;500;600;700&display=swap" rel="stylesheet" />
+   <style>
+    :root {
+      --rojo:      #E50914;
+      --blanco:    #FFFFFF;
+      --negro:     #1A1A1A;
+      --gris-1:    #4D4D4D;
+      --gris-2:    #2B2B2B;
+      --grad-rojo: linear-gradient(135deg, #E50914 0%, #8B0000 100%);
+      --font-title: 'Bebas Neue', sans-serif;
+      --font-body:  'Raleway', sans-serif;
+      --transition: 0.3s ease;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--negro);
+      color: var(--blanco);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    img { display: block; max-width: 100%; }
+    a   { text-decoration: none; color: inherit; }
+
+    .container {
+      width: min(1200px, 92%);
+      margin-inline: auto;
+    }
+    .rojo   { color: var(--rojo); }
+    .blanco { color: var(--blanco); }
+
+    .red-line {
+      display: block;
+      width: 60px; height: 3px;
+      background: var(--rojo);
+      margin: 0 auto 1rem;
+    }
+
+    /* ---- BOTONES ---- */
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: .6rem;
+      padding: .85rem 2.4rem;
+      background: transparent;
+      border: 2px solid var(--rojo);
+      color: var(--blanco);
+      font-family: var(--font-body);
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      transition: color var(--transition);
+    }
+    .btn-primary::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: var(--rojo);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform var(--transition);
+      z-index: 0;
+    }
+    .btn-primary:hover::before { transform: scaleX(1); }
+    .btn-primary span, .btn-primary svg { position: relative; z-index: 1; }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: .6rem;
+      padding: .8rem 2.2rem;
+      background: transparent;
+      border: 1.5px solid rgba(255,255,255,0.45);
+      color: var(--blanco);
+      font-family: var(--font-body);
+      font-size: .9rem;
+      font-weight: 600;
+      letter-spacing: .06em;
+      cursor: pointer;
+      transition: border-color var(--transition), background var(--transition);
+    }
+    .btn-secondary:hover {
+      border-color: var(--blanco);
+      background: rgba(255,255,255,0.06);
+    }
+
+    /* ---- HEADER ---- */
+    header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: .75rem 0;
+      background: rgba(26,26,26,0.0);
+      backdrop-filter: blur(0px);
+      transition: background .4s ease, backdrop-filter .4s ease;
+    }
+    header.scrolled {
+      background: rgba(26,26,26,0.95);
+      backdrop-filter: blur(12px);
+    }
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+      transition: transform var(--transition);
+      z-index: 101;
+    }
+    .nav-logo:hover { transform: scale(1.04); }
+    .nav-logo-horizontal {
+      height: 34px; width: auto; display: block;
+    }
+
+    /* Links desktop */
+    .nav-links {
+      display: flex; gap: 2rem; list-style: none;
+    }
+    .nav-links a {
+      font-size: .82rem; font-weight: 600;
+      letter-spacing: .12em; text-transform: uppercase;
+      color: rgba(255,255,255,0.75);
+      position: relative;
+      white-space: nowrap;
+      transition: color var(--transition);
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      left: 0; bottom: -4px;
+      width: 0; height: 2px;
+      background: var(--rojo);
+      transition: width var(--transition);
+    }
+    .nav-links a:hover { color: var(--blanco); }
+    .nav-links a:hover::after { width: 100%; }
+
+    /* Social desktop */
+    .nav-social {
+      display: flex; gap: 1rem; align-items: center; flex-shrink: 0;
+    }
+    .nav-social a {
+      color: rgba(255,255,255,0.65);
+      transition: color var(--transition);
+    }
+    .nav-social a:hover { color: var(--blanco); }
+
+    /* Hamburguesa — oculto en desktop */
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 36px; height: 36px;
+      background: none; border: none;
+      cursor: pointer; padding: 4px;
+      z-index: 101; flex-shrink: 0;
+    }
+    .nav-hamburger span {
+      display: block;
+      width: 100%; height: 2px;
+      background: var(--blanco);
+      border-radius: 2px;
+      transition: transform .3s ease, opacity .3s ease;
+      transform-origin: center;
+    }
+    /* Estado abierto */
+    .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* Menú mobile drawer */
+    .nav-drawer {
+      display: none; /* se activa en mobile */
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      background: rgba(20,20,20,0.98);
+      backdrop-filter: blur(16px);
+      padding: 5.5rem 2rem 2.5rem;
+      z-index: 100;
+      transform: translateY(-100%);
+      transition: transform .35s ease;
+    }
+    .nav-drawer.open { transform: translateY(0); }
+    .nav-drawer ul {
+      list-style: none;
+      display: flex; flex-direction: column; gap: 0;
+    }
+    .nav-drawer ul li a {
+      display: block;
+      font-family: var(--font-title);
+      font-size: 2.2rem;
+      letter-spacing: .06em;
+      color: rgba(255,255,255,0.8);
+      padding: .6rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      transition: color var(--transition), padding-left var(--transition);
+    }
+    .nav-drawer ul li a:hover {
+      color: var(--rojo);
+      padding-left: .6rem;
+    }
+    .nav-drawer-social {
+      display: flex; gap: 1.2rem; margin-top: 1.8rem;
+    }
+    .nav-drawer-social a {
+      color: rgba(255,255,255,0.5);
+      transition: color var(--transition);
+    }
+    .nav-drawer-social a:hover { color: var(--blanco); }
+
+    /* ---- HERO ---- */
+    #hero {
+      min-height: 100vh;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background: var(--negro);
+    }
+    .hero-hex-grid {
+      position: absolute;
+      inset: -260px;
+      background-image:
+        url("Creativos/sin-hexagono-removebg-preview.webp"),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='300'%3E%3Cpolygon points='130,10 248,76 248,224 130,290 12,224 12,76' fill='none' stroke='rgba(229,9,20,0.10)' stroke-width='1.5'/%3E%3C/svg%3E");
+      background-size: 130px auto, 260px 300px;
+      background-position: 65px 80px, 0 0;
+      background-repeat: repeat, repeat;
+      opacity: .28;
+      filter: grayscale(1) brightness(.6);
+      pointer-events: none;
+      z-index: 0;
+      animation: hexLoop 40s linear infinite;
+    }
+    @keyframes hexLoop {
+      from { background-position: 65px 80px, 0 0; }
+      to   { background-position: 325px 380px, 260px 300px; }
+    }
+    .hero-hex-grid-2 {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse at 85% 50%, rgba(229,9,20,0.08) 0%, transparent 45%),
+        rgba(26,26,26,0.55);
+      pointer-events: none; z-index: 0;
+    }
+    .hero-hex-grid-3 { display: none; }
+    .hero-vignette {
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at center, transparent 20%, rgba(26,26,26,0.72) 100%);
+      pointer-events: none; z-index: 1;
+    }
+    .hero-dust {
+      position: absolute; inset: 0;
+      overflow: hidden; pointer-events: none; z-index: 1;
+    }
+    .hero-dust span {
+      position: absolute; bottom: -10px; border-radius: 50%;
+      background: rgba(229,9,20,0.85);
+      box-shadow: 0 0 8px rgba(229,9,20,0.7), 0 0 16px rgba(229,9,20,0.4);
+      animation: dustRise var(--dur, 6s) var(--delay, 0s) ease-in infinite;
+    }
+    .hero-dust span:nth-child(1)  { left:6%;  --dur:7s;   --delay:0s;   width:4px; height:4px; }
+    .hero-dust span:nth-child(2)  { left:13%; --dur:5s;   --delay:1.2s; width:5px; height:5px; }
+    .hero-dust span:nth-child(3)  { left:20%; --dur:8s;   --delay:2.5s; width:3px; height:3px; background:rgba(255,255,255,0.7); box-shadow:0 0 6px rgba(255,255,255,0.6),0 0 14px rgba(255,255,255,0.3);}
+    .hero-dust span:nth-child(4)  { left:27%; --dur:6s;   --delay:0.8s; width:6px; height:6px; }
+    .hero-dust span:nth-child(5)  { left:34%; --dur:9s;   --delay:3.1s; width:4px; height:4px; background:rgba(255,255,255,0.6); box-shadow:0 0 6px rgba(255,255,255,0.5),0 0 14px rgba(255,255,255,0.25);}
+    .hero-dust span:nth-child(6)  { left:41%; --dur:5.5s; --delay:1.7s; width:5px; height:5px; }
+    .hero-dust span:nth-child(7)  { left:48%; --dur:7.5s; --delay:0.4s; width:3px; height:3px; background:rgba(255,255,255,0.75); box-shadow:0 0 6px rgba(255,255,255,0.6),0 0 14px rgba(255,255,255,0.3);}
+    .hero-dust span:nth-child(8)  { left:55%; --dur:6.5s; --delay:2.2s; width:6px; height:6px; }
+    .hero-dust span:nth-child(9)  { left:62%; --dur:8.5s; --delay:1s;   width:4px; height:4px; background:rgba(255,255,255,0.65); box-shadow:0 0 6px rgba(255,255,255,0.55),0 0 14px rgba(255,255,255,0.25);}
+    .hero-dust span:nth-child(10) { left:69%; --dur:5s;   --delay:3.8s; width:5px; height:5px; }
+    .hero-dust span:nth-child(11) { left:76%; --dur:7s;   --delay:0.6s; width:3px; height:3px; background:rgba(255,255,255,0.7); box-shadow:0 0 6px rgba(255,255,255,0.6),0 0 14px rgba(255,255,255,0.3);}
+    .hero-dust span:nth-child(12) { left:83%; --dur:6s;   --delay:2.9s; width:5px; height:5px; }
+    .hero-dust span:nth-child(13) { left:90%; --dur:8s;   --delay:1.4s; width:4px; height:4px; }
+    .hero-dust span:nth-child(14) { left:96%; --dur:5.8s; --delay:0.2s; width:6px; height:6px; }
+    .hero-dust span:nth-child(15) { left:3%;  --dur:6.8s; --delay:2.7s; width:3px; height:3px; background:rgba(255,255,255,0.7); box-shadow:0 0 6px rgba(255,255,255,0.6),0 0 14px rgba(255,255,255,0.3);}
+    .hero-dust span:nth-child(16) { left:45%; --dur:7.2s; --delay:4.1s; width:5px; height:5px; }
+    @keyframes dustRise {
+      0%   { transform: translateY(0)      translateX(0)    scale(1);   opacity: 0; }
+      8%   { opacity: 1; }
+      50%  { transform: translateY(-50vh)  translateX(15px)  scale(1.5); opacity: .95; }
+      80%  { transform: translateY(-85vh)  translateX(-10px) scale(.7);  opacity: .4; }
+      100% { transform: translateY(-110vh) translateX(8px)   scale(.3);  opacity: 0; }
+    }
+
+    .hero-content {
+      position: relative; z-index: 2;
+      text-align: center;
+      padding: 8rem 1rem 4rem;
+    }
+    .hero-logo-wrap {
+      margin-bottom: 1.5rem;
+      animation: fadeDown .8s ease both;
+    }
+    .hex-logo {
+      position: relative;
+      width: clamp(150px, 18vw, 230px);
+      aspect-ratio: 1 / 1.08;
+      margin: 0 auto;
+      filter: drop-shadow(0 0 28px rgba(229,9,20,0.5));
+      animation: breathe 3.6s ease-in-out 0.8s infinite;
+    }
+    .hex-logo.breathe-reset { animation: none; }
+    .hex-frame {
+      position: absolute; inset: 0;
+      background: var(--rojo);
+      clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    }
+    .hex-inner {
+      position: absolute; inset: 5px;
+      background: var(--negro);
+      clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+      z-index: 0;
+    }
+    .hex-img {
+      position: absolute; inset: 5px;
+      width: calc(100% - 10px);
+      height: calc(100% - 10px);
+      object-fit: contain;
+      object-position: center;
+      clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+      z-index: 1;
+    }
+    .hex-logo:hover {
+      filter: drop-shadow(0 0 50px rgba(229,9,20,0.9));
+    }
+    .hero-title {
+      font-family: var(--font-title);
+      font-size: clamp(4rem, 12vw, 10rem);
+      line-height: .95;
+      letter-spacing: .02em;
+      animation: fadeDown .9s .15s ease both;
+    }
+    .hero-title .sub {
+      display: block;
+      color: var(--rojo);
+      font-size: clamp(2rem, 6vw, 5rem);
+      letter-spacing: .08em;
+    }
+    .hero-tagline {
+      margin: 1.2rem 0 2.4rem;
+      font-size: clamp(.8rem, 1.8vw, 1rem);
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.65);
+      animation: fadeUp .9s .3s ease both;
+    }
+    .hero-tagline .tribu { color: var(--rojo); font-weight: 700; }
+    .hero-cta { animation: fadeUp .9s .45s ease both; }
+    .hero-scroll {
+      position: absolute;
+      bottom: 2rem; left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      animation: bounce 2s infinite;
+      color: rgba(255,255,255,0.4);
+    }
+
+    /* ---- DISCIPLINAS ---- */
+    #disciplinas {
+      padding: 7rem 0 6rem;
+      background: var(--negro);
+      scroll-margin-top: 80px;
+    }
+    .section-header {
+      text-align: center;
+      margin-bottom: 3.5rem;
+      position: relative;
+      z-index: 1;
+    }
+    .section-header h2 {
+      font-family: var(--font-title);
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      letter-spacing: .04em;
+      line-height: 1;
+    }
+    .section-header p {
+      margin-top: .6rem;
+      font-size: .85rem;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+    }
+
+    .disciplinas-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .disciplina-card {
+      display: block;
+      position: relative;
+      overflow: hidden;
+      background: var(--gris-2);
+      border: 1px solid rgba(255,255,255,0.06);
+      cursor: pointer;
+      transition: transform .4s ease, border-color .4s ease;
+    }
+    a.disciplina-card-link { color: inherit; text-decoration: none; }
+    .disciplina-cta {
+      display: inline-block;
+      margin-top: 1rem;
+      font-size: .78rem; font-weight: 700;
+      letter-spacing: .08em; text-transform: uppercase;
+      color: var(--rojo);
+      transition: transform .3s ease, color .3s ease;
+    }
+    .disciplina-card-link:hover .disciplina-cta {
+      transform: translateX(5px);
+      color: var(--blanco);
+    }
+    .disciplina-card::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: rgba(229,9,20,0.18);
+      opacity: 0; pointer-events: none; z-index: 3;
+      transition: opacity .4s ease;
+    }
+    .disciplina-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(229,9,20,0.55);
+    }
+    .disciplina-card:hover::before {
+      animation: redPulse 1.6s ease-in-out infinite;
+    }
+    @keyframes redPulse {
+      0%,100% { opacity: 0.22; }
+      50%     { opacity: 0.55; }
+    }
+
+    /* ── CORRECCIÓN MOBILE: imagen con altura fija, nunca crece más allá ── */
+    .disciplina-img-wrap {
+      position: relative;
+      /* altura fija en desktop, reducida en mobile via media query */
+      height: 220px;
+      overflow: hidden;
+    }
+    .disciplina-img-wrap img {
+      /* ocupa todo el contenedor sin distorsionarse */
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+      transition: transform .6s ease, filter .6s ease;
+      filter: brightness(.7) saturate(.8);
+    }
+    .disciplina-card:hover .disciplina-img-wrap img {
+      transform: scale(1.06);
+      filter: brightness(.85) saturate(.95);
+    }
+    .disciplina-img-wrap::after {
+      content: '';
+      position: absolute;
+      left: 0; right: 0; bottom: 0;
+      height: 40%;
+      background: linear-gradient(to bottom, transparent 0%, var(--gris-2) 100%);
+      pointer-events: none;
+    }
+
+    .disciplina-card-body {
+      position: relative;
+      padding: 0 1.6rem 1.8rem;
+      text-align: center;
+      margin-top: -34px;
+      z-index: 1;
+    }
+    .disciplina-icon-wrap {
+      width: 64px; height: 64px;
+      margin: 0 auto 1rem;
+      display: flex; align-items: center; justify-content: center;
+      transition: transform .4s ease;
+    }
+    .disciplina-card:hover .disciplina-icon-wrap { transform: scale(1.08); }
+    .disciplina-icon {
+      width: 52px; height: 52px;
+      object-fit: contain;
+      filter: drop-shadow(0 2px 6px rgba(0,0,0,0.5));
+    }
+    .disciplina-card h3 {
+      font-family: var(--font-title);
+      font-size: clamp(1.4rem, 2.2vw, 1.7rem);
+      letter-spacing: .06em; line-height: 1.05;
+      margin: 0 0 .7rem; color: var(--blanco);
+    }
+    .disciplina-card p {
+      font-size: .85rem;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.55;
+      max-width: 28ch; margin: 0 auto;
+    }
+    .disciplina-card-border {
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 3px; background: var(--rojo); z-index: 2;
+    }
+
+    /* ---- TRIBU ---- */
+    #tribu {
+      padding: 6rem 0;
+      background: var(--gris-2);
+      position: relative; overflow: hidden;
+      scroll-margin-top: 80px;
+    }
+    #tribu::before {
+      content: '';
+      position: absolute;
+      top: -50%; left: -20%;
+      width: 70vw; height: 70vw;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(229,9,20,0.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .tribu-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      align-items: stretch;
+    }
+    .tribu-left {
+      position: relative; border-radius: 2px; overflow: hidden;
+    }
+    .tribu-left-bg {
+      position: absolute; inset: 0;
+      background-image: url("Creativos/manos-disciplina.webp");
+      background-size: cover;
+      background-position: center center;
+      filter: brightness(.55) saturate(.75);
+      z-index: 0;
+      transition: transform 6s ease, filter .6s ease;
+    }
+    .tribu-left:hover .tribu-left-bg {
+      transform: scale(1.04);
+      filter: brightness(.62) saturate(.85);
+    }
+    .tribu-left::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 3px; background: var(--rojo); z-index: 2;
+    }
+    .tribu-left-content {
+      position: relative; z-index: 1;
+      padding: 2.5rem 2rem 2.5rem 2.4rem;
+      background: linear-gradient(
+        to right,
+        rgba(26,26,26,0.82) 0%,
+        rgba(26,26,26,0.65) 60%,
+        rgba(26,26,26,0.3) 100%
+      );
+    }
+    .tribu-left-content h2 {
+      font-family: var(--font-title);
+      font-size: clamp(2.4rem, 5vw, 3.6rem);
+      line-height: 1; letter-spacing: .04em;
+      margin-bottom: 2.5rem;
+    }
+    .benefit-list {
+      list-style: none;
+      display: flex; flex-direction: column; gap: 1.3rem;
+    }
+    .benefit-item {
+      display: flex; align-items: center; gap: 1.1rem;
+      padding: 1rem 1.2rem;
+      border: 1px solid rgba(255,255,255,0.07);
+      background: rgba(255,255,255,0.02);
+      transition: background .3s ease, border-color .3s ease, transform .3s ease;
+    }
+    .benefit-item:hover {
+      background: rgba(229,9,20,0.08);
+      border-color: rgba(229,9,20,0.4);
+      transform: translateX(6px);
+    }
+    .benefit-icon {
+      flex-shrink: 0;
+      width: 44px; height: 44px;
+      background: rgba(229,9,20,0.15);
+      border: 1px solid rgba(229,9,20,0.4);
+      display: flex; align-items: center; justify-content: center;
+      clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    }
+    .benefit-icon svg { color: var(--rojo); }
+    .benefit-item span {
+      font-size: .95rem; font-weight: 600; letter-spacing: .04em;
+    }
+
+    /* ---- FORM ---- */
+    .form-box {
+      background: rgba(26,26,26,0.7);
+      border: 1px solid rgba(255,255,255,0.08);
+      padding: 2.5rem;
+      scroll-margin-top: 90px;
+    }
+    .form-box h3 {
+      font-family: var(--font-title);
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      letter-spacing: .04em; margin-bottom: .4rem;
+    }
+    .form-box p.sub {
+      font-size: .82rem; color: rgba(255,255,255,0.5); margin-bottom: 1.8rem;
+    }
+    .form-box p.sub a { color: #25D366; }
+    .field {
+      position: relative; margin-bottom: 1.1rem;
+    }
+    .field svg {
+      position: absolute; left: 1rem; top: 50%;
+      transform: translateY(-50%);
+      color: rgba(255,255,255,0.3); pointer-events: none;
+    }
+    .field select { width: 100%; appearance: none; }
+    .field .chevron {
+      position: absolute; right: 1rem; top: 50%;
+      transform: translateY(-50%);
+      pointer-events: none; color: rgba(255,255,255,0.3);
+    }
+    .field input, .field select {
+      width: 100%;
+      padding: .9rem 1rem .9rem 2.8rem;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.12);
+      color: var(--blanco);
+      font-family: var(--font-body); font-size: .9rem;
+      outline: none;
+      transition: border-color .3s ease, background .3s ease;
+    }
+    .field input::placeholder { color: rgba(255,255,255,0.3); }
+    .field input:focus, .field select:focus {
+      border-color: var(--rojo);
+      background: rgba(229,9,20,0.05);
+    }
+    .field select option { background: var(--negro); }
+    .form-disclaimer {
+      margin-top: .8rem; text-align: center;
+      font-size: .75rem; color: rgba(255,255,255,0.35);
+    }
+
+    /* ---- VALIDACIÓN INLINE ---- */
+    .field-error {
+      display: none;
+      margin-top: .4rem;
+      padding-left: .2rem;
+      font-size: .75rem;
+      font-weight: 600;
+      letter-spacing: .03em;
+      color: var(--rojo);
+    }
+    .field.has-error .field-error {
+      display: block;
+      animation: fadeInError .28s ease;
+    }
+    .field.has-error input,
+    .field.has-error select {
+      border-color: var(--rojo);
+      background: rgba(229,9,20,0.08);
+      animation: shakeError .4s ease;
+    }
+    .field.has-error > svg:not(.chevron) {
+      color: var(--rojo);
+    }
+    @keyframes shakeError {
+      0%,100% { transform: translateX(0); }
+      20%     { transform: translateX(-6px); }
+      40%     { transform: translateX(6px); }
+      60%     { transform: translateX(-4px); }
+      80%     { transform: translateX(4px); }
+    }
+    @keyframes fadeInError {
+      from { opacity: 0; transform: translateY(-4px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ---- FOOTER ---- */
+    footer {
+      background: #111;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding: 2.5rem 0;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: auto 1fr 1fr 1fr;
+      gap: 2rem; align-items: start;
+    }
+    .footer-brand { display: flex; align-items: center; }
+    .footer-logo-horizontal { height: 40px; width: auto; display: block; }
+    .footer-col h4 {
+      font-size: .72rem; letter-spacing: .2em;
+      text-transform: uppercase; color: var(--rojo); margin-bottom: .6rem;
+    }
+    .footer-col p, .footer-col a {
+      font-size: .83rem; color: rgba(255,255,255,0.55);
+      line-height: 1.8; display: block;
+    }
+    .footer-col a:hover { color: var(--blanco); }
+
+    /* ---- KEYFRAMES ---- */
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes bounce {
+      0%,100% { transform: translateX(-50%) translateY(0); }
+      50%      { transform: translateX(-50%) translateY(8px); }
+    }
+    @keyframes breathe {
+      0%,100% { transform: scale(1);    filter: drop-shadow(0 0 28px rgba(229,9,20,0.4)); }
+      50%     { transform: scale(1.07); filter: drop-shadow(0 0 48px rgba(229,9,20,0.75)); }
+    }
+
+    /* ---- CURSOR ---- */
+    @media (hover: hover) and (pointer: fine) {
+      * { cursor: none !important; }
+      .cursor-ring, .cursor-dot {
+        position: fixed; top: 0; left: 0;
+        border-radius: 50%; pointer-events: none;
+        z-index: 9999; transform: translate(-50%, -50%);
+      }
+      .cursor-ring {
+        width: 30px; height: 30px;
+        border: 2px solid var(--rojo);
+        box-shadow: 0 0 10px rgba(229,9,20,0.6), inset 0 0 6px rgba(229,9,20,0.3);
+        transition: width .25s ease, height .25s ease, background .25s ease, border-color .25s ease;
+      }
+      .cursor-dot {
+        width: 6px; height: 6px;
+        background: var(--rojo);
+        box-shadow: 0 0 6px rgba(229,9,20,0.9);
+        transition: width .15s ease, height .15s ease;
+      }
+      .cursor-ring.cursor-active {
+        width: 46px; height: 46px;
+        background: rgba(229,9,20,0.12);
+        border-color: var(--blanco);
+      }
+      .cursor-dot.cursor-active { width: 4px; height: 4px; }
+    }
+
+    /* ---- REVEAL ---- */
+    [data-reveal] {
+      opacity: 0; transform: translateY(40px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+    [data-reveal].visible { opacity: 1; transform: translateY(0); }
+    [data-reveal-delay="1"] { transition-delay: .1s; }
+    [data-reveal-delay="2"] { transition-delay: .2s; }
+    [data-reveal-delay="3"] { transition-delay: .3s; }
+    [data-reveal-delay="4"] { transition-delay: .4s; }
+
+    /* ============================================================
+       RESPONSIVE MOBILE
+    ============================================================ */
+    @media (max-width: 860px) {
+      .tribu-inner { grid-template-columns: 1fr; gap: 2rem; }
+    }
+
+    /* ── BREAKPOINT TABLET (≤900px): ocultar nav links, mostrar hamburguesa ── */
+    @media (max-width: 900px) {
+      .nav-links  { display: none; }
+      .nav-social { display: none; }
+      .nav-hamburger { display: flex; }
+      .nav-drawer { display: block; }
+    }
+
+    @media (max-width: 768px) {
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .footer-brand { grid-column: span 2; }
+      .disciplina-img-wrap { height: 180px; }
+      .disciplinas-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 480px) {
+      .footer-grid { grid-template-columns: 1fr; }
+      .footer-brand { grid-column: 1; }
+      .disciplina-img-wrap { height: 160px; }
+      /* Btn form no rompa en pantallas muy chicas */
+      .btn-primary { padding: .75rem 1.2rem; font-size: .88rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Cursor personalizado (mira roja) -->
+  <div class="cursor-ring" aria-hidden="true"></div>
+  <div class="cursor-dot"  aria-hidden="true"></div>
+
+  <!-- ============================================================
+       HEADER
+  ============================================================ -->
+  <header id="main-header">
+    <div class="container">
+      <nav>
+        <!-- Logo — versión horizontal del manual de marca -->
+        <a href="#hero" class="nav-logo">
+          <img class="nav-logo-horizontal"
+               src="Creativos/version-vertical-no-bg.webp"
+               alt="Africa Training Club" decoding="async" />
+        </a>
+
+        <!-- Nav links -->
+        <ul class="nav-links" id="nav-links">
+          <li><a href="#disciplinas">Disciplinas</a></li>
+          <li><a href="#tribu">Nosotros</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+
+        <!-- Social -->
+        <div class="nav-social">
+          <!-- Instagram -->
+          <a href="https://www.instagram.com/africatrainingclub/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+              <circle cx="12" cy="12" r="4"/>
+              <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+            </svg>
+          </a>
+          <!-- Facebook -->
+          <a href="https://www.facebook.com/profile.php?id=61575239067732" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/>
+            </svg>
+          </a>
+        </div>
+
+        <!-- Botón hamburguesa (solo visible en mobile/tablet) -->
+        <button class="nav-hamburger" id="nav-hamburger"
+                aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-drawer">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </nav>
+    </div>
+
+    <!-- Menú drawer mobile -->
+    <div class="nav-drawer" id="nav-drawer" aria-hidden="true">
+      <ul>
+        <li><a href="#disciplinas">Disciplinas</a></li>
+        <li><a href="#tribu">Nosotros</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+      <div class="nav-drawer-social">
+        <a href="https://www.instagram.com/africatrainingclub/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+            <circle cx="12" cy="12" r="4"/>
+            <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+          </svg>
+        </a>
+        <a href="https://www.facebook.com/profile.php?id=61575239067732" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============================================================
+       HERO
+  ============================================================ -->
+  <section id="hero">
+    <div class="hero-bg"></div>
+
+    <!-- 3 capas de hexágonos negros (la grande lleva el isotipo adentro) -->
+    <div class="hero-hex-grid"   aria-hidden="true"></div>
+    <div class="hero-hex-grid-2" aria-hidden="true"></div>
+    <div class="hero-hex-grid-3" aria-hidden="true"></div>
+
+    <!-- Viñeta central -->
+    <div class="hero-vignette" aria-hidden="true"></div>
+
+    <!-- Polvillo -->
+    <div class="hero-dust" aria-hidden="true">
+      <span></span><span></span><span></span><span></span><span></span>
+      <span></span><span></span><span></span><span></span><span></span>
+      <span></span><span></span><span></span><span></span><span></span>
+      <span></span>
+    </div>
+
+    <div class="hero-content">
+
+      <div class="hero-logo-wrap">
+        <div class="hex-logo">
+          <span class="hex-frame"  aria-hidden="true"></span>
+          <span class="hex-inner"  aria-hidden="true"></span>
+          <img class="hex-img"
+               src="Creativos/sin-hexagono-removebg-preview.webp"
+               alt="Africa Training Club — isotipo" decoding="async" />
+        </div>
+      </div>
+
+      <h1 class="hero-title">
+        AFRICA
+        <span class="sub">TRAINING CLUB</span>
+      </h1>
+
+      <p class="hero-tagline">
+        Más que un gimnasio, somos una <span class="tribu">TRIBU</span>
+      </p>
+
+      <div class="hero-cta">
+        <a href="https://wa.me/5492616929952?text=Hola!%20Quiero%20entrenar%20en%20Africa%20Training%20Club" target="_blank" rel="noopener noreferrer" class="btn-primary">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+            <path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.118 1.528 5.847L0 24l6.349-1.504A11.943 11.943 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.81 9.81 0 01-5.006-1.37l-.36-.214-3.728.882.944-3.638-.234-.374A9.818 9.818 0 012.182 12C2.182 6.578 6.578 2.182 12 2.182S21.818 6.578 21.818 12 17.422 21.818 12 21.818z"/>
+          </svg>
+          <span>QUIERO ENTRENAR</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="hero-scroll" aria-hidden="true">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <path d="M6 9l6 6 6-6"/>
+        <path d="M6 14l6 6 6-6" opacity=".4"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SECCIÓN DISCIPLINAS
+  ============================================================ -->
+  <section id="disciplinas">
+    <div class="container">
+
+      <header class="section-header" data-reveal>
+        <span class="red-line"></span>
+        <h2>ENTRENÁ. <span class="rojo">SUPERATE.</span> PERTENECÉ.</h2>
+        <p>Tres disciplinas, un mismo objetivo: <span class="rojo">tu mejor versión.</span></p>
+      </header>
+
+      <div class="disciplinas-grid">
+
+        <!-- CROSSFIT -->
+        <article class="disciplina-card" data-reveal data-reveal-delay="1">
+          <div class="disciplina-img-wrap">
+            <img src="Creativos/crossfit.webp"
+                 sizes="(max-width:600px) 100vw, 33vw"
+                 alt="Crossfit — entrenamiento funcional de alta intensidad" loading="lazy" decoding="async" />
+          </div>
+          <div class="disciplina-card-body">
+            <div class="disciplina-icon-wrap">
+              <img class="disciplina-icon" src="Creativos/kembelld-removebg-preview.webp" alt="" aria-hidden="true" decoding="async" loading="lazy" />
+            </div>
+            <h3>CROSSFIT</h3>
+            <p>Fuerza, resistencia y condicionamiento funcional para el día a día.</p>
+          </div>
+          <div class="disciplina-card-border"></div>
+        </article>
+
+        <!-- LEVANTAMIENTO -->
+        <article class="disciplina-card" data-reveal data-reveal-delay="2">
+          <div class="disciplina-img-wrap">
+            <img src="Creativos/Pesomuerto.webp"
+                 sizes="(max-width:600px) 100vw, 33vw"
+                 alt="Levantamiento Olímpico — técnica y potencia" loading="lazy" decoding="async" />
+          </div>
+          <div class="disciplina-card-body">
+            <div class="disciplina-icon-wrap">
+              <img class="disciplina-icon" src="Creativos/levantamiento-no-bg.webp" alt="" aria-hidden="true" decoding="async" loading="lazy" />
+            </div>
+            <h3>LEVANTAMIENTO<br>OLÍMPICO</h3>
+            <p>Técnica, potencia y explosividad para llevar tu rendimiento al máximo.</p>
+          </div>
+          <div class="disciplina-card-border"></div>
+        </article>
+
+        <!-- PADDLE — enlaza a reserva de canchas -->
+        <a class="disciplina-card disciplina-card-link"
+           href="https://atcsports.io/venues/africa-padel-maipu?utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQPOTM2NjE5NzQzMzkyNDU5AAGnOOd0tIpkWDr8QgLKzG0ypC3VDslb8SXy_-DFfyjKQA89SF30BRMufoDYUCk_aem_gd1bhClUnA3OFo_RPJUPWw"
+           target="_blank" rel="noopener noreferrer"
+           aria-label="Reservar cancha de paddle"
+           data-reveal data-reveal-delay="3">
+          <div class="disciplina-img-wrap">
+            <img src="Creativos/Paddleafrica.webp"
+                 sizes="(max-width:600px) 100vw, 33vw"
+                 alt="Paddle — deporte, diversión y comunidad" loading="lazy" decoding="async" />
+          </div>
+          <div class="disciplina-card-body">
+            <div class="disciplina-icon-wrap">
+              <img class="disciplina-icon" src="Creativos/paddle-no-bg.webp" alt="" aria-hidden="true" decoding="async" loading="lazy" />
+            </div>
+            <h3>PADDLE</h3>
+            <p>Diversión, competencia y comunidad dentro y fuera de la cancha.</p>
+            <span class="disciplina-cta">Reservá tu cancha →</span>
+          </div>
+          <div class="disciplina-card-border"></div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SECCIÓN TRIBU + FORMULARIO
+  ============================================================ -->
+  <section id="tribu">
+    <div class="container">
+      <div class="tribu-inner">
+
+        <!-- Beneficios -->
+        <div class="tribu-left" data-reveal>
+          <!-- Imagen de fondo manos-disciplina -->
+          <div class="tribu-left-bg" aria-hidden="true"></div>
+
+          <div class="tribu-left-content">
+            <span class="red-line" style="margin:0 0 1rem;"></span>
+            <h2>UNITE A LA <span class="rojo">TRIBU</span></h2>
+
+            <ul class="benefit-list">
+              <li class="benefit-item">
+                <div class="benefit-icon">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/>
+                    <circle cx="9" cy="7" r="4"/>
+                    <path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/>
+                  </svg>
+                </div>
+                <span>Entrenadores certificados</span>
+              </li>
+              <li class="benefit-item">
+                <div class="benefit-icon">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/>
+                  </svg>
+                </div>
+                <span>Comunidad que te impulsa</span>
+              </li>
+              <li class="benefit-item">
+                <div class="benefit-icon">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                    <line x1="8" y1="21" x2="16" y2="21"/>
+                    <line x1="12" y1="17" x2="12" y2="21"/>
+                  </svg>
+                </div>
+                <span>Instalaciones profesionales</span>
+              </li>
+              <li class="benefit-item">
+                <div class="benefit-icon">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+                  </svg>
+                </div>
+                <span>Ambiente de alto rendimiento</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Formulario -->
+        <div id="contacto" class="form-box" data-reveal data-reveal-delay="2">
+          <h3>¿LISTO PARA DAR EL <span class="rojo">PRIMER PASO?</span></h3>
+          <p class="sub">Dejanos tus datos y te contactamos por <a href="https://wa.me/5492616929952" target="_blank" rel="noopener noreferrer">WhatsApp.</a></p>
+
+          <div class="field">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/>
+              <circle cx="12" cy="7" r="4"/>
+            </svg>
+            <input type="text" placeholder="Nombre y Apellido" autocomplete="name" />
+            <span class="field-error">Por favor ingresá tu nombre y apellido</span>
+          </div>
+
+          <div class="field">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+              <path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.118 1.528 5.847L0 24l6.349-1.504A11.943 11.943 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.81 9.81 0 01-5.006-1.37l-.36-.214-3.728.882.944-3.638-.234-.374A9.818 9.818 0 012.182 12C2.182 6.578 6.578 2.182 12 2.182S21.818 6.578 21.818 12 17.422 21.818 12 21.818z"/>
+            </svg>
+            <input type="tel" placeholder="WhatsApp" autocomplete="tel" />
+            <span class="field-error">Ingresá un número de WhatsApp válido</span>
+          </div>
+
+          <div class="field">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M12 8v4l3 3"/>
+            </svg>
+            <select>
+              <option value="" disabled selected>¿Cuál es tu objetivo?</option>
+              <option>Reservar cancha</option>
+              <option>Consultar programas de entrenamiento</option>
+              <option>Mejorar condición física</option>
+              <option>Aprender Levantamiento Olímpico</option>
+              <option>Otro</option>
+            </select>
+            <svg class="chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M6 9l6 6 6-6"/>
+            </svg>
+          </div>
+
+          <button class="btn-primary" style="width:100%;justify-content:center;margin-top:.4rem;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+              <path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.118 1.528 5.847L0 24l6.349-1.504A11.943 11.943 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.81 9.81 0 01-5.006-1.37l-.36-.214-3.728.882.944-3.638-.234-.374A9.818 9.818 0 012.182 12C2.182 6.578 6.578 2.182 12 2.182S21.818 6.578 21.818 12 17.422 21.818 12 21.818z"/>
+            </svg>
+            <span>QUIERO ENTRENAR</span>
+          </button>
+
+          <p class="form-disclaimer">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:inline;vertical-align:middle;margin-right:4px;">
+              <circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/>
+            </svg>
+            Sin bots. Sin spam. Solo personas.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FOOTER
+  ============================================================ -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+
+        <div class="footer-brand">
+          <img class="footer-logo-horizontal"
+               src="Creativos/version-vertical-no-bg.webp"
+               alt="Africa Training Club" decoding="async" />
+        </div>
+
+        <div class="footer-col">
+          <h4>Ubicación</h4>
+          <p>Carril Rodrigez Peña 3341</p>
+          <p>Mendoza, Maipú, Argentina</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Horarios</h4>
+          <p>Lunes a Viernes: 6 a 22hs</p>
+          <p>Sábados: 8 a 14hs</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Escribinos</h4>
+          <a href="https://wa.me/5492616929952" target="_blank" rel="noopener noreferrer">+54 9 261 692-9952</a>
+          <div style="display:flex;gap:.8rem;margin-top:.6rem;">
+            <a href="https://www.instagram.com/africatrainingclub/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" style="color:rgba(255,255,255,0.5);transition:color .3s;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <rect x="2" y="2" width="20" height="20" rx="5"/>
+                <circle cx="12" cy="12" r="4"/>
+                <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+              </svg>
+            </a>
+            <a href="https://www.facebook.com/profile.php?id=61575239067732" target="_blank" rel="noopener noreferrer" aria-label="Facebook" style="color:rgba(255,255,255,0.5);transition:color .3s;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============================================================
+       JAVASCRIPT
+  ============================================================ -->
+  <script>
+    // ── Header scroll effect
+    const header = document.getElementById('main-header');
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('scrolled', window.scrollY > 50);
+    }, { passive: true });
+
+    // ── Menú hamburguesa (mobile)
+    (function () {
+      const hamburger = document.getElementById('nav-hamburger');
+      const drawer    = document.getElementById('nav-drawer');
+      if (!hamburger || !drawer) return;
+
+      function openMenu() {
+        hamburger.classList.add('open');
+        drawer.classList.add('open');
+        hamburger.setAttribute('aria-expanded', 'true');
+        hamburger.setAttribute('aria-label', 'Cerrar menú');
+        drawer.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden'; // bloquea scroll detrás
+      }
+      function closeMenu() {
+        hamburger.classList.remove('open');
+        drawer.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
+        hamburger.setAttribute('aria-label', 'Abrir menú');
+        drawer.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+      }
+
+      // Toggle al tocar el botón
+      hamburger.addEventListener('click', () => {
+        drawer.classList.contains('open') ? closeMenu() : openMenu();
+      });
+
+      // Cerrar al tocar cualquier link del menú
+      drawer.querySelectorAll('a').forEach(a => {
+        a.addEventListener('click', closeMenu);
+      });
+
+      // Cerrar con ESC (útil si se redimensiona a desktop con el menú abierto)
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && drawer.classList.contains('open')) closeMenu();
+      });
+
+      // Si el usuario rota o agranda la ventana a desktop, cerrar el menú
+      window.addEventListener('resize', () => {
+        if (window.innerWidth > 900 && drawer.classList.contains('open')) closeMenu();
+      });
+    })();
+
+    // ── Scroll reveal
+    const reveals = document.querySelectorAll('[data-reveal]');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    reveals.forEach(el => observer.observe(el));
+
+    // ── Respiración del isotipo: reinicia al entrar el hero al viewport
+    const hexLogo   = document.querySelector('.hex-logo');
+    const heroSection = document.getElementById('hero');
+
+    const heroObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          // Fuerza reflow para reiniciar la animación CSS
+          hexLogo.classList.add('breathe-reset');
+          void hexLogo.offsetWidth;                  // reflow
+          hexLogo.classList.remove('breathe-reset');
+        }
+      });
+    }, { threshold: 0.4 });
+
+    // ── Cursor personalizado (mira roja)
+    (function () {
+      const ring = document.querySelector('.cursor-ring');
+      const dot  = document.querySelector('.cursor-dot');
+      if (!ring || !dot) return;
+      // Solo en dispositivos con puntero fino (no táctiles)
+      if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+
+      let mouseX = 0, mouseY = 0;     // posición real del mouse
+      let ringX = 0, ringY = 0;       // posición interpolada del anillo
+
+      document.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+        // El punto sigue al instante
+        dot.style.left = mouseX + 'px';
+        dot.style.top  = mouseY + 'px';
+      });
+
+      // El anillo sigue con suavizado (lerp)
+      function animateRing() {
+        ringX += (mouseX - ringX) * 0.18;
+        ringY += (mouseY - ringY) * 0.18;
+        ring.style.left = ringX + 'px';
+        ring.style.top  = ringY + 'px';
+        requestAnimationFrame(animateRing);
+      }
+      animateRing();
+
+      // Estado activo sobre elementos interactivos
+      const interactive = 'a, button, input, select, textarea, [role="button"], .disciplina-card, .benefit-item';
+      document.querySelectorAll(interactive).forEach(el => {
+        el.addEventListener('mouseenter', () => {
+          ring.classList.add('cursor-active');
+          dot.classList.add('cursor-active');
+        });
+        el.addEventListener('mouseleave', () => {
+          ring.classList.remove('cursor-active');
+          dot.classList.remove('cursor-active');
+        });
+      });
+
+      // Ocultar cuando el mouse sale de la ventana
+      document.addEventListener('mouseleave', () => {
+        ring.style.opacity = '0';
+        dot.style.opacity  = '0';
+      });
+      document.addEventListener('mouseenter', () => {
+        ring.style.opacity = '1';
+        dot.style.opacity  = '1';
+      });
+    })();
+
+    // ── Activar observer del hero (breathing reset)
+    heroObserver.observe(heroSection);
+
+    // ── Form submit → WhatsApp (con validación inline)
+    (function () {
+      const formBox  = document.querySelector('.form-box');
+      const submitBtn = formBox.querySelector('.btn-primary');
+      const nameInput = formBox.querySelector('input[type=text]');
+      const phoneInput = formBox.querySelector('input[type=tel]');
+      const goalSelect = formBox.querySelector('select');
+
+      // Marca un campo como inválido
+      function setError(input) {
+        input.closest('.field').classList.add('has-error');
+      }
+      function clearError(input) {
+        input.closest('.field')?.classList.remove('has-error');
+      }
+
+      // Auto-limpieza del error apenas el usuario corrige
+      [nameInput, phoneInput].forEach(el => {
+        el.addEventListener('input', () => clearError(el));
+      });
+
+      submitBtn.addEventListener('click', () => {
+        // Limpiar estados previos
+        formBox.querySelectorAll('.field.has-error').forEach(f => f.classList.remove('has-error'));
+
+        let firstInvalid = null;
+
+        // Nombre: al menos 2 caracteres no-espacios
+        if (nameInput.value.trim().length < 2) {
+          setError(nameInput);
+          firstInvalid = firstInvalid || nameInput;
+        }
+
+        // WhatsApp: al menos 8 dígitos (acepta espacios, guiones, +, paréntesis)
+        const phoneDigits = phoneInput.value.replace(/\D/g, '');
+        if (phoneDigits.length < 8) {
+          setError(phoneInput);
+          firstInvalid = firstInvalid || phoneInput;
+        }
+
+        if (firstInvalid) {
+          firstInvalid.focus({ preventScroll: true });
+          firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          return;
+        }
+
+        const nombre   = nameInput.value.trim();
+        const telefono = phoneInput.value.trim();
+        const objetivo = goalSelect.value;
+        const msg = encodeURIComponent(
+          `Hola! Soy ${nombre}. Mi número es ${telefono}. Mi objetivo: ${objetivo || 'sin especificar'}.`
+        );
+        window.open(`https://wa.me/5492616929952?text=${msg}`, '_blank');
+      });
+    })();
+  </script>
+
+</body>
+</html>
